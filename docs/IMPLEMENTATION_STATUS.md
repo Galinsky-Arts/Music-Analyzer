@@ -7,18 +7,25 @@ reduce the approved scope. Read [AGENTS.md](../AGENTS.md) before implementation.
 
 ## Review stack
 
-GitHub confirms that PR01 through PR15 are merged into `main`. The observed main
-commit is `17f761838e4ccbd37c4384f992429fda2f6ec52d` (PR15). Earlier descriptions
-saying main contained only the plan are historical, not the current state.
+Reconciled with GitHub on 2026-11-15. All 16 planned code PRs (PR01 through PR16)
+are merged into `main`. PR16 (native Mac delivery) merged on 2026-10-10 as
+`50b0c3cb11d8934c3123932e3bb458c86518c0a4`; later main commits are documentation,
+registry, monitoring and CI changes (current main `754044c8f7f61ae3a5ca1d774f079a198df1de46`;
+PR #24 moved Mac packaging to the macos-15 runner after GitHub retired macos-14).
+The repository now lives at `Galinsky-Arts/Music-Analyzer`; run links to
+`neophilism/Music-Analyzer` below are historical evidence from before the move.
 
-PR16 contains the native Mac delivery work. Before this repair, its head
-`5c051162e7820354353433da59e3ede7f636410f` passed all four jobs in
+Before merge, PR16 head `5c051162e7820354353433da59e3ede7f636410f` passed all four jobs in
 [Tests run 38067565724](https://github.com/neophilism/Music-Analyzer/actions/runs/38067565724):
 Linux core, macOS 15 core, macOS 14 package, and macOS 15 clean installation.
-Those results apply to that exact head; any subsequent head must pass fresh CI.
-The live transition record and next actions are in
+The current unsigned review package is built from `main` by the same `Tests`
+workflow; see the README for the latest run and artifact. The live transition record and next actions are in
 [repo-development-progress.md](../repo-development-progress.md). No public
 release or signing success is implied by a source merge.
+
+Open, unmerged: PR19 (E2EESA status tracking, documentation/records) and PR20
+(CircleCI full suites; on hold because CircleCI macOS executors cost credits).
+Neither is required for the merged product scope.
 
 | PR | Implementation | Verification / remaining limits |
 | --- | --- | --- |
@@ -37,7 +44,7 @@ release or signing success is implied by a source merge.
 | 13 | Personal anchors, positivity and intensity calibration | Merged; independent automatic values retained |
 | 14 | Verified numbered copy/move, reports, resume and undo | Merged; platform collision and fault-injection tests |
 | 15 | 200-track benchmark and independent evaluation tools | Merged; synthetic fixtures are not listening evidence |
-| 16 | Mac bundle, package verification, notices and signing workflow | Existing Mac CI passed; workflow repair requires fresh CI before merge |
+| 16 | Mac bundle, package verification, notices and signing workflow | Merged (`50b0c3c`); all four CI jobs passed. Signing/notarization still needs Apple credentials |
 | 17–18 | Cleared labeled data and supervised heads | Conditional; not activated without inadequate-baseline evidence and usable data |
 
 ## Earlier CI failures and repairs

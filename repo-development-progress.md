@@ -77,13 +77,13 @@ in its approved plan. Do not turn it into a web service.
 | Item | Observed state / next action |
 | --- | --- |
 | PR01–PR15 | Already merged before this session; observed main `17f761838e4ccbd37c4384f992429fda2f6ec52d` |
-| PR16 | Existing draft, head `5c051162e7820354353433da59e3ede7f636410f`, originally based on `pr15-batch-evaluation`; retarget main after repair |
+| PR16 | Merged 2026-10-10 as `50b0c3cb11d8934c3123932e3bb458c86518c0a4`; all 16 planned code PRs are now merged |
 | Existing CI | Run 38067565724: Linux core, macOS core, macOS 14 package and macOS 15 clean installation all successful at the above head |
 | Selected repair | Align manual signing Python 3.12.15 with the 3.12.10 pin validated by package CI; add three regression guards |
 | Targeted tests | Before: 1 failed / 2 passed; after: 3 passed. Full CI and lint at the repaired head are still required |
 | Branch policy | main reports unprotected, required contexts empty; rulesets unavailable on the current private-repository plan. Still enforce all four workflow jobs and review checks |
 | Conditional PR17–PR18 | Not activated; require evidence of inadequate baseline and cleared labeled data |
-| Release | Not complete. No public release or signing operation performed |
+| Release | Not complete. No public release or signing operation performed. Unsigned review package rebuilt from main on 2026-11-15 (see README) |
 
 The signed-workflow bug is attributable: initial package run 38066288991 failed
 because Python 3.12.15 was unavailable on macOS 14 arm64; only the unsigned
@@ -115,6 +115,20 @@ unsigned package smoke tests cannot satisfy these gates.
    reconciled implementation handoff on the existing PR16 branch. Next: record
    its new head, retarget to main, inspect fresh CI and review state, fix any
    attributable failure, and merge only after every required gate passes.
+
+6. 2026-10-10: PR16 merged into main (`50b0c3c`) after all four jobs passed;
+   PR01–PR16 are all merged. PR17 (first-run guide) followed.
+7. 2026-10-11 to 2026-10-20: Documentation, registry, owner-policy and
+   deployment-monitor PRs #18, #21, #22 and #23 merged. Repository now hosted at
+   `Galinsky-Arts/Music-Analyzer`.
+8. 2026-11-15: The README Mac build link pointed at an expired artifact on the
+   old repository. The first re-run (43747766000) was cancelled because GitHub
+   retired the macos-14 runner; PR #24 moved package/signing jobs to macos-15
+   (deployment target 14.0, all four jobs green) and was merged. Main run
+   43749319220 at `754044c` passed all four jobs; README/GETTING_STARTED now point
+   to its macos-arm64-review artifact (expires 2026-12-15).
+   Rebased PR19 onto main (clean). Left PR20 open: CircleCI macOS credits cost
+   money, so it is on hold for an owner decision. No release published.
 
 ## Next execution
 

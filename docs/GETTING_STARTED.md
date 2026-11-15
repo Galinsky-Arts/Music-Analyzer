@@ -5,7 +5,7 @@
 You need an Apple Silicon Mac running macOS 14 or later. In the Apple menu,
 About This Mac should show an Apple chip, not an Intel processor. The app includes
 its Python runtime. You do not need Terminal, Python, an Apple developer account,
-or completion of the other neophilism repositories for this review build.
+or completion of any other repositories for this review build.
 
 This is an ad-hoc-signed review application, not a Developer ID-signed/notarized
 public release. Use copies of recordings for your first trial. Its automated
@@ -13,22 +13,25 @@ checks do not establish listening accuracy or manual testing on your own Mac.
 
 ## 1. Download the verified application
 
-Sign into GitHub using the account with access to this private repository.
+Sign into GitHub (any account; GitHub requires sign-in to download Actions artifacts).
 
 Download:
-https://github.com/neophilism/Music-Analyzer/actions/runs/38070930610/artifacts/11676882107
+https://github.com/Galinsky-Arts/Music-Analyzer/actions/runs/43749319220/artifacts/14176081213
 
 Fallback: open the build page below, scroll to Artifacts, and click
 macos-arm64-review. Do not choose the batch report or clean-install report;
 those are evidence files, not the application.
 
-https://github.com/neophilism/Music-Analyzer/actions/runs/38070930610
+https://github.com/Galinsky-Arts/Music-Analyzer/actions/runs/43749319220
 
-Verified source: 50b0c3cb11d8934c3123932e3bb458c86518c0a4.
-Download size: 237,717,221 bytes (about 238 MB).
-Artifact expiration: November 9, 2026. Retain a local copy before expiration.
+Verified source: 754044c8f7f61ae3a5ca1d774f079a198df1de46.
+Download size: 238,015,421 bytes (about 238 MB).
+Artifact expiration: December 15, 2026. Retain a local copy before expiration;
+afterwards, re-run the Tests workflow on main for a fresh build.
 The linked run passed all four jobs, including native package verification and
-separate clean installation without developer Python dependencies.
+separate clean installation without developer Python dependencies. The package
+is built on macOS 15 for macOS 14 or later; macOS 14 itself is no longer
+available as a CI runner.
 
 Unzip the outer macos-arm64-review download. Inside it, unzip
 Music-Analyzer-macos-arm64-unsigned-review.zip. Move Music Analyzer.app into

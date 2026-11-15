@@ -10,7 +10,7 @@ permissions:
   contents: read
 jobs:
   signed-review:
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 50
     env:
       QT_QPA_PLATFORM: offscreen

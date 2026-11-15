@@ -37,9 +37,11 @@ jobs:
           path: benchmark-output/ci-200/report.json
   mac-package:
     needs: core
-    runs-on: macos-14
+    # GitHub retired the macos-14 arm64 image; macos-15 builds with a macOS 14 deployment target.
+    runs-on: macos-15
     timeout-minutes: 45
     env:
+      MACOSX_DEPLOYMENT_TARGET: '14.0'
       QT_QPA_PLATFORM: offscreen
       OMP_NUM_THREADS: '1'
       NUMBA_NUM_THREADS: '1'
@@ -79,8 +81,8 @@ jobs:
           PYTHONNOUSERSITE: '1'
         run: |
           unset PYTHONPATH PYTHONHOME VIRTUAL_ENV
-          "dist/Music Analyzer.app/Contents/MacOS/MusicAnalyzer" --verify-package --model-directory "$PWD/model-pack" --verification-report artifacts/macos-14-frozen.json
-          cat artifacts/macos-14-frozen.json
+          "dist/Music Analyzer.app/Contents/MacOS/MusicAnalyzer" --verify-package --model-directory "$PWD/model-pack" --verification-report artifacts/macos-15-frozen.json
+          cat artifacts/macos-15-frozen.json
           codesign --verify --deep --strict --verbose=2 "dist/Music Analyzer.app"
           ditto -c -k --sequesterRsrc --keepParent "dist/Music Analyzer.app" artifacts/Music-Analyzer-macos-arm64-unsigned-review.zip
           cp -R build/third-party-notices artifacts/third-party-notices

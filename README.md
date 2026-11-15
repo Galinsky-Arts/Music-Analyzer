@@ -9,17 +9,21 @@ or server.
 **Apple Silicon Mac, macOS 14 or later. No separate Python installation needed.**
 Intel Macs are not supported by this review package.
 
-[Download the verified Mac review build](https://github.com/neophilism/Music-Analyzer/actions/runs/38070930610/artifacts/11676882107)
-(about 238 MB; sign into the GitHub account with access to this private repository).
+[Download the verified Mac review build](https://github.com/Galinsky-Arts/Music-Analyzer/actions/runs/43749319220/artifacts/14176081213)
+(about 238 MB; GitHub requires you to be signed in to download Actions artifacts).
 If the direct link does not open, use the
-[verified build page](https://github.com/neophilism/Music-Analyzer/actions/runs/38070930610)
+[verified build page](https://github.com/Galinsky-Arts/Music-Analyzer/actions/runs/43749319220)
 and select **macos-arm64-review** under **Artifacts**.
 
-This is the build of merged commit `50b0c3cb11d8934c3123932e3bb458c86518c0a4`.
-Linux/macOS core tests, the macOS 14 package check, and the separate macOS 15
-clean-install/offline-model check all passed in that run. The artifact expires
-on November 9, 2026; retain your downloaded copy. Later builds must be verified
-against their own source commit and checks rather than assumed equivalent.
+This is the build of main commit `754044c8f7f61ae3a5ca1d774f079a198df1de46`
+(PR01–PR16 merged plus later docs/CI changes). Linux/macOS core tests, the macOS
+package check and the separate macOS 15 clean-install/offline-model check all
+passed in that run. GitHub retired its macOS 14 runner, so the package is now
+built on macOS 15 with a macOS 14 deployment target; running on macOS 14 has not
+been re-verified in CI. **The artifact expires on December 15, 2026**; keep your
+downloaded copy. To make a fresh build after that, run the **Tests** workflow on
+`main` (Actions → Tests → Run workflow). Each build must be verified against its
+own source commit and checks rather than assumed equivalent.
 
 Unzip the download, then unzip **Music-Analyzer-macos-arm64-unsigned-review.zip**
 inside it. Move **Music Analyzer.app** to **Applications** and open it. The model
@@ -99,7 +103,7 @@ PR01-PR16 are merged. Use `main` for development; the instructions above do not
 require cloning the source or installing development dependencies.
 
 ```bash
-git clone https://github.com/neophilism/Music-Analyzer.git
+git clone https://github.com/Galinsky-Arts/Music-Analyzer.git
 cd Music-Analyzer
 git checkout main
 python3.12 -m venv .venv
